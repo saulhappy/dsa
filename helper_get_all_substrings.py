@@ -11,4 +11,4 @@ def get_all_substrings(s):
     return result
 
 
-print(get_all_substrings("abc"))
+print(get_all_substrings("abc")) # -> ['a', 'ab', 'abc', 'b', 'bc', 'c']
