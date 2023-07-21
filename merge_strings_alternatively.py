@@ -34,5 +34,26 @@ merged: a p b q c   d
 
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
+        if not word1 and not word2:
+            return ''
+        
+        if len(word1) == len(word2):
+            return self.merge_strings_same_length(word1, word2)
+        
+        if len(word1) > len(word2):
+            return self.merge_strings_word1_longer(word1, word2)
+        
+        if len(word1) < len(word2):
+            return self.merge_strings_word2_longer(word1, word2)
+        
+
+
+    def merge_strings_same_length(self, word1: str, word2: str) -> str:
         pass
 
+    
+    def merge_strings_word1_longer(self, word1: str, word2: str) -> str:
+        pass
+
+    def merge_strings_word2_longer(self, word1: str, word2: str) -> str:
+        pass
