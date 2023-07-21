@@ -49,7 +49,7 @@ class Solution:
 
 
     def merge_strings_same_length(self, word1: str, word2: str) -> str:
-        pass
+        print("is this working?")
 
     
     def merge_strings_word1_longer(self, word1: str, word2: str) -> str:
@@ -57,3 +57,9 @@ class Solution:
 
     def merge_strings_word2_longer(self, word1: str, word2: str) -> str:
         pass
+
+
+solution = Solution()
+
+
+solution.mergeAlternately(word1="word1", word2="word2")
