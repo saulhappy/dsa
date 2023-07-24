@@ -49,17 +49,39 @@ class Solution:
 
 
     def merge_strings_same_length(self, word1: str, word2: str) -> str:
-        print("is this working?")
+        result = ''
+        for i, char in enumerate(word1):
+            result += char
+            result += word2[i]
+        return result
 
-    
     def merge_strings_word1_longer(self, word1: str, word2: str) -> str:
-        pass
+        result  = ''
+
+        for i, char in enumerate(word2):
+            result += word1[i]
+            result += char
+        result += word1[len(word2):]
+        return result
+
 
     def merge_strings_word2_longer(self, word1: str, word2: str) -> str:
-        pass
+        result  = ''
+
+        for i, char in enumerate(word1):
+            result += char
+            result += word2[i]
+        result += word2[len(word1):]
+        return result
 
 
-solution = Solution()
+# TEST CASES
 
 
-solution.mergeAlternately(word1="word1", word2="word2")
+print(Solution().mergeAlternately(word1="", word2=""))  # => ''
+
+print(Solution().mergeAlternately(word1="abc", word2="123"))  # => 'a1b2c3'
+
+print(Solution().mergeAlternately(word1="abcdef", word2="123"))  # => 'a1b2c3def'
+
+print(Solution().mergeAlternately(word1="abc", word2="12345"))  # => 'a1b2c345'
