@@ -1,6 +1,29 @@
+# from collections import Counter
+
+# def find_duplicate(nums):
+#     nums_map = Counter(nums)
+
+#     for k, v in nums_map.items():
+#         if v >= 2:
+#             return k
+
+
 def find_duplicate(nums):
+    fast = slow = nums[0]
+  
+    while True:
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+        if slow == fast:
+            break
     
-    return 0
+    slow = nums[0]
+   
+    while slow != fast:
+        slow = nums[slow]
+        fast = nums[fast]
+    
+    return fast
 
 
 
