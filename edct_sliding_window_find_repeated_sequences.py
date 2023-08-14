@@ -1,8 +1,16 @@
 def find_repeated_sequences(s, k):
+    seen = []
+    result = set()
 
-    # Replace this placeholder return statement with your code
+    for i in range(len(s)):
+        curr_string = s[i:k]
+        if curr_string in seen:
+            result.add(curr_string)
+        else:
+            seen.append(curr_string)
+        k += 1
 
-    return set()
+    return result
 
 
 print(find_repeated_sequences(s="AGCTGAAAGCTTAGCTG", k=5)) # => ("AGCTG")
