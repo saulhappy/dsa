@@ -7,21 +7,22 @@ If there are multiple minimum-length substrings that meet the subsequence requir
 """
 
 def min_window(str1, str2):
-    positive_window_start = 0
-    positive_window_end = 0
-    iteration_end = 1
-    curr_min_window = [0,0]
+    valid_range = []
+    str2_i = 0
 
     for i in range(len(str1)):
-        if str2 in str1[i:iteration_end]:
-            positive_window_start = i
-            positive_window_end = iteration_end
-
+        if str1[i] == str2[str2_i]:
+            valid_range.append(i)
+            str2_i += 1
+            if str2_i == len(str2):
+                break
+    if len(valid_range) == len(str2):
+        return str1[valid_range[0] : valid_range[-1] + 1]
     return ""
 
+print(min_window(str1="abcdebdde", str2="bde")) # => "bcde"
 print(min_window(str1="abbcb", str2="ac")) # => "abbc"
-# print(min_window(str1="abcdebdde", str2="bde")) # => "bcde"
-# print(min_window(str1="abcdebdde", str2="bdf")) # => ""
-# print(min_window(str1="this is a test string", str2="tis")) # => "this"
-# print(min_window(str1="asbfgedasfbdaaf", str2="bfd")) # => "bfged"
-# print(min_window(str1="Hello how are you", str2="ok")) # => ""
+print(min_window(str1="abcdebdde", str2="bdf")) # => ""
+print(min_window(str1="this is a test string", str2="tis")) # => "this"
+print(min_window(str1="asbfgedasfbdaaf", str2="bfd")) # => "bfged"
+print(min_window(str1="Hello how are you", str2="ok")) # => ""
