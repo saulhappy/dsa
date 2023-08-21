@@ -6,8 +6,16 @@ If there are multiple minimum-length substrings that meet the subsequence requir
 
 """
 
+def add_to_valid_ranges(valid_ranges: dict, valid_range: list) -> list:
+    start = valid_range[0]
+    end = valid_range[-1]
+    valid_ranges[(start, end)] = end - start
+    return valid_ranges
+
+
 def min_window(str1, str2):
     valid_range = []
+    valid_ranges = {}
     str2_i = 0
 
     for i in range(len(str1)):
@@ -15,14 +23,14 @@ def min_window(str1, str2):
             valid_range.append(i)
             str2_i += 1
             if str2_i == len(str2):
-                break
+                add_to_valid_ranges(valid_ranges=valid_ranges, valid_range=valid_range)
     if len(valid_range) == len(str2):
         return str1[valid_range[0] : valid_range[-1] + 1]
     return ""
 
 print(min_window(str1="abcdebdde", str2="bde")) # => "bcde"
-print(min_window(str1="abbcb", str2="ac")) # => "abbc"
-print(min_window(str1="abcdebdde", str2="bdf")) # => ""
-print(min_window(str1="this is a test string", str2="tis")) # => "this"
-print(min_window(str1="asbfgedasfbdaaf", str2="bfd")) # => "bfged"
-print(min_window(str1="Hello how are you", str2="ok")) # => ""
+# print(min_window(str1="abbcb", str2="ac")) # => "abbc"
+# print(min_window(str1="abcdebdde", str2="bdf")) # => ""
+# print(min_window(str1="this is a test string", str2="tis")) # => "this"
+# print(min_window(str1="asbfgedasfbdaaf", str2="bfd")) # => "bfged"
+# print(min_window(str1="Hello how are you", str2="ok")) # => ""
